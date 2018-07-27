@@ -1,7 +1,13 @@
 import csv
 import numpy as np
+
+import matplotlib
+
+#matplotlib.use('GTKAgg') 
+
 from sklearn.svm import SVR
 import matplotlib.pyplot as plt
+
 
 dates = []
 prices = []
