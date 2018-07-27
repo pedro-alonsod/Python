@@ -10,3 +10,7 @@ m[0] = np.zeros((3,)) # set row at a time
 print(m[:2, 1:3]) # use slices as indices to get a submatrix m = a + b # matrix addition
 m = a.transpose() * b # elementwise multiplication
 c = np.dot(a, b) # matrix multiplication
+
+import numpy.distutils.system_info as sysinfo
+    
+sysinfo.get_info('openblas')
