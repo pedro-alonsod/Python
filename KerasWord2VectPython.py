@@ -23,6 +23,8 @@ def tokenize(corpus):
     tokenizer = Tokenizer()
     tokenizer.fit_on_texts(corpus)
     corpus_tokenized = tokenizer.texts_to_sequences(corpus)
+    print(corpus_tokenized, "corpus tokenize")
+    print(corpus, "corpus")
     V = len(tokenizer.word_index)
     return corpus_tokenized, V
 
@@ -69,7 +71,9 @@ def corpus2io(corpus_tokenized, V, window_size):
             contexts.append([words[i]-1 for i in range(s, e) if 0 <= i < L and i != index])
             labels.append(word-1)
             x = np_utils.to_categorical(contexts, V)
+            print(x, "ix")
             y = np_utils.to_categorical(labels, V)
+            print(y, "y", y.ravel(), "y.ravel()")
             yield (x, y.ravel())
 
 window_size = 2
@@ -123,7 +127,7 @@ W2 = np.random.rand(N, V)
 loss = 0.
 for i, (context, label) in enumerate(corpus2io(corpus_tokenized, V, window_size)):
     W1, W2, loss = cbow(context, label, W1, W2, loss)
-    print("Training example #{} \n-------------------- \n\n \t label = {}, \n \t context = {}".format(i, label, context))
+    print("Training example CBow #{} \n-------------------- \n\n \t label = {}, \n \t context = {}".format(i, label, context))
     print("\t W1 = {}\n\t W2 = {} \n\t loss = {}\n".format(W1, W2, loss))
 
 def skipgram(context, x, W1, W2, loss):
@@ -149,5 +153,5 @@ def skipgram(context, x, W1, W2, loss):
 
 for i, (label, center) in enumerate(corpus2io(corpus_tokenized, V, window_size)):
     W1, W2, loss = skipgram(label, center, W1, W2, loss)
-    print("Training example #{} \n-------------------- \n\n \t label = {}, \n \t center = {}".format(i, label, center))
+    print("Training example Skipgram #{} \n-------------------- \n\n \t label = {}, \n \t center = {}".format(i, label, center))
     print("\t W1 = {}\n\t W2 = {} \n\t loss = {}\n".format(W1, W2, loss))
