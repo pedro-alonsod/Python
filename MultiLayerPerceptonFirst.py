@@ -1,5 +1,5 @@
 import numpy as np
-n = 1000
+n = 10
 X = np.random.rand(n, 2) * 4 - 2
 labels = X[:,0] ** 2 + X[:,1] ** 2 < 1
 print(X)
@@ -33,7 +33,6 @@ print(Y_pred)
 from keras.layers import Activation
 model = Sequential()
 model.add(Dense(output_dim=3, input_dim=2))
-6
   
 model.add(Activation('tanh'))
 model.add(Dense(output_dim=3, input_dim=3))
