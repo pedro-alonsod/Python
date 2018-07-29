@@ -1,3 +1,5 @@
+import keras
+
 class GAN():
     def __init__(self):
         self.img_rows = 28 
