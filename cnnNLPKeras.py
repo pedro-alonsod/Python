@@ -42,7 +42,7 @@ Performance after 5 epochs:
 Dev-Accuracy: 79.09% (loss: 0.5046)
 Test-Accuracy: 77.44% (loss: 0.5163)
 """
-from __future__ import print_function
+# from __future__ import print_function
 import numpy as np
 np.random.seed(1337)  # for reproducibility
 
