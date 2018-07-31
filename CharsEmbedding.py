@@ -6,11 +6,14 @@ file_path = "./glove.840B.300d.txt"
 vectors = {}
 with open(file_path, 'rb') as f:
     for line in f:
+        # print(line, "line")
         line_split = line.strip().split(" ")
         vec = np.array(line_split[1:], dtype=float)
         word = line_split[0]
 
         for char in word:
+            print(char, "char")
+            print(vectors, "vectors")
             if ord(char) < 128:
                 if char in vectors:
                     vectors[char] = (vectors[char][0] + vec,
